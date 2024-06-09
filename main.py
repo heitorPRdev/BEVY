@@ -3,7 +3,11 @@ from pytube import YouTube
 import os
 def main(page: ft.Page):
     page.title = 'BEVY'
-    
+    page.window_width = 500
+    page.window_height = 300
+    page.window_center()
+    page.window_resizable = False
+    page.window_maximizable = False
     def close_infoBanner(e):
         page.banner.open = False
         page.update()
@@ -62,7 +66,7 @@ def main(page: ft.Page):
 
 
     text1 = ft.Text('Coloque o link aqui')
-    inputArea = ft.TextField(label='Seu Link', border_color=ft.colors.PURPLE_800)
+    inputArea = ft.TextField(label='Seu Link', border_color=ft.colors.PURPLE_800, color='white')
     checkBoxMp4 = ft.Checkbox(label="MP4", active_color=ft.colors.PURPLE_700, check_color='white')
     checkBoxMp3 = ft.Checkbox(label="MP3",active_color=ft.colors.PURPLE_700, check_color='white')
     btnDown = ft.FilledButton('Donwload',on_click=DownbtnFunc,  style=ft.ButtonStyle(
