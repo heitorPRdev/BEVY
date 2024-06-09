@@ -2,6 +2,7 @@ import flet as ft
 from pytube import YouTube
 import os
 def main(page: ft.Page):
+    page.title = 'BEVY'
     
     def close_infoBanner(e):
         page.banner.open = False
@@ -56,19 +57,32 @@ def main(page: ft.Page):
             ft.FilledButton("Fechar", on_click=close_infoBanner, icon_color='black'),
         ],
     )
-
+   
     
 
 
     text1 = ft.Text('Coloque o link aqui')
-    inputArea = ft.TextField()
-    checkBoxMp4 = ft.Checkbox(label="MP4",)
-    checkBoxMp3 = ft.Checkbox(label="MP3",)
-    btnDown = ft.FilledButton('Donwload', on_click=DownbtnFunc)
+    inputArea = ft.TextField(label='Seu Link', border_color=ft.colors.PURPLE_800)
+    checkBoxMp4 = ft.Checkbox(label="MP4", active_color=ft.colors.PURPLE_700, check_color='white')
+    checkBoxMp3 = ft.Checkbox(label="MP3",active_color=ft.colors.PURPLE_700, check_color='white')
+    btnDown = ft.FilledButton('Donwload',on_click=DownbtnFunc,  style=ft.ButtonStyle(
+        bgcolor={
+            ft.MaterialState.HOVERED: ft.colors.PURPLE_800,
+            ft.MaterialState.FOCUSED: ft.colors.PURPLE_700,
+            ft.MaterialState.DEFAULT: ft.colors.PURPLE_900,
+        },
+        color={
+            
+            ft.MaterialState.DEFAULT: ft.colors.WHITE,
+        }
+        
+        ))
+
    
     page.add(
         text1,
         ft.Row(
+            
             [
             ft.Container(
                 content=inputArea,
