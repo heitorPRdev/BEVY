@@ -3,8 +3,8 @@ from pytube import YouTube
 import os
 def main(page: ft.Page):
     page.title = 'BEVY'
-    page.window_width = 500
-    page.window_height = 300
+    page.window_width = 650
+    page.window_height = 450
     page.window_center()
     page.window_resizable = False
     page.window_maximizable = False
@@ -33,9 +33,10 @@ def main(page: ft.Page):
                 
                 if arquivoFormat == 'mp4':
                     
-                    ytObj = YouTube(inputArea.value)
-                    ytObj = ytObj.streams.get_highest_resolution()
-                    ytObj.download(output_path=paraApasta)
+                    yt = YouTube(inputArea.value)
+                    ytObj = yt.streams.filter(only_audio=False).first()
+                    ytObj.download(filename=f'{yt.title}.mp4', output_path=paraApasta)
+                    
                 else:
                     
                     yt = YouTube(inputArea.value)
